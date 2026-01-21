@@ -37,7 +37,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen pb-20 md:pb-0">
       <Header />
 
       {/* Hero */}
@@ -150,10 +150,10 @@ export default function ContactPage() {
               </h2>
               <p className="text-lg text-noir">
                 <a
-                  href="mailto:contact@rtp.fr"
+                  href="mailto:romane.lemarie.rtp@gmail.com"
                   className="text-bordeaux hover:underline font-semibold"
                 >
-                  contact@rtp.fr
+                  romane.lemarie.rtp@gmail.com
                 </a>
               </p>
             </div>

@@ -3,55 +3,103 @@ import MobileCTA from "@/components/MobileCTA";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
 import TestimonialSlider from "@/components/TestimonialSlider";
+import Image from "next/image";
+import { FaCheckCircle, FaHeart, FaInfoCircle, FaArrowRight, FaLightbulb, FaDumbbell, FaClipboardList, FaUserMd, FaComments, FaTrophy } from "react-icons/fa";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen pb-20 md:pb-0">
       <Header />
 
-      {/* 1. Hero très court (message + CTA) */}
+      {/* 1. Hero avec nouveau titre fort */}
       <section className="min-h-screen flex items-center justify-center px-4 pt-20 pb-24 md:pt-32 bg-gradient-to-b from-beige to-rose/20">
         <div className="container mx-auto max-w-4xl text-center animate-fade-in">
           <h1 className="text-4xl md:text-5xl font-bold text-bordeaux mb-6 leading-tight">
-            Je t'aide à reprendre ton sport sans fuites urinaires
+            Tu aimes courir, sauter, t'entraîner…
+            <br />
+            mais ton périnée ne suit plus ?
           </h1>
-          <p className="text-xl md:text-2xl text-noir mb-8">
-            grâce à un accompagnement 100% personnalisé
+          <p className="text-xl md:text-2xl text-noir mb-4">
+            Je suis Romane, kiné, et je t'aide à reprendre ton sport sans fuites, sans tabou et sans toucher vaginal.
           </p>
-          <Button
-            href="/contact"
-            variant="primary"
-            className="px-8 py-4 text-lg md:text-xl"
-          >
-            Je démarre maintenant
-          </Button>
+          <div className="flex justify-center">
+            <Button
+              href="/contact"
+              variant="primary"
+              className="px-8 py-4 text-lg md:text-xl flex items-center gap-2 max-w-xs md:max-w-sm"
+            >
+              <FaDumbbell /> Retrouver mon périnée
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* 2. Problème identifié (fuites à l'effort) */}
+      {/* 2. Section "Est-ce que tu te reconnais ?" - CRUCIALE */}
       <Section className="bg-beige-light">
         <div className="text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-bordeaux mb-6">
-            Tu connais cette situation ?
+          <h2 className="text-3xl md:text-4xl font-bold text-bordeaux mb-8">
+            Tu te reconnais dans ces situations ?
           </h2>
-          <div className="space-y-4 text-lg text-noir">
-            <p>
-              Tu adores ton sport mais chaque saut, chaque course, chaque effort
-              te rappelle que quelque chose ne va pas.
+          <div className="max-w-3xl mx-auto space-y-4 text-lg text-noir text-left">
+            <div className="flex items-start gap-3">
+              <span className="text-bordeaux text-xl">•</span>
+              <p>Tu mets toujours un legging noir… au cas où</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-bordeaux text-xl">•</span>
+              <p>Tu contractes les fesses avant chaque saut</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-bordeaux text-xl">•</span>
+              <p>Tu fais pipi "par précaution" avant le sport</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-bordeaux text-xl">•</span>
+              <p>Tu te dis que "ça passera avec le temps"</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-bordeaux text-xl">•</span>
+              <p>Tu as déjà fait une rééducation classique… sans réel changement dans le sport</p>
+            </div>
+          </div>
+          <div className="mt-8 space-y-3 text-lg text-bordeaux font-semibold">
+            <p className="flex items-center gap-2 justify-center">
+              <FaHeart className="text-bordeaux" />
+              Si oui, tu n'es pas seule.
             </p>
-            <p className="font-semibold text-bordeaux">
-              Les fuites urinaires à l'effort ont pris le contrôle.
-            </p>
-            <p>
-              Tu as peut-être déjà fait une rééducation classique, mais ça n'a
-              rien changé. Tu refuses d'arrêter ou de te protéger à vie.
+            <p className="flex items-center gap-2 justify-center">
+              <FaCheckCircle className="text-bordeaux" />
+              Et surtout : il existe des solutions.
             </p>
           </div>
         </div>
       </Section>
 
-      {/* 3. Présentation du programme RTP */}
+      {/* 3. Déconstruire les idées fausses */}
       <Section className="bg-gradient-to-b from-rose/30 to-beige">
+        <div>
+          <h2 className="text-3xl md:text-4xl font-bold text-bordeaux mb-6 text-center">
+            On t'a peut-être déjà dit que :
+          </h2>
+          <div className="max-w-3xl mx-auto space-y-4 text-lg text-noir mb-8">
+            <div className="flex items-start gap-3">
+              <span className="text-red-600 text-xl">❌</span>
+              <p>"Les fuites, c'est normal quand on fait du sport"</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-red-600 text-xl">❌</span>
+              <p>"Il faut juste serrer plus fort"</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-red-600 text-xl">❌</span>
+              <p>"Il vaut mieux éviter les impacts"</p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* 4. RTP comme transformation (pas un programme) */}
+      <Section className="bg-beige-light">
         <div className="text-center">
           <div className="inline-block bg-bordeaux text-white px-6 py-2 rounded-full text-xl font-bold mb-6">
             RTP
@@ -59,223 +107,133 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold text-bordeaux mb-6">
             Retrouve Ton Périnée
           </h2>
-          <p className="text-xl text-noir mb-4">
-            Un programme d'accompagnement en ligne 100% personnalisé
+          <p className="text-xl text-noir mb-6 font-semibold">
+            RTP, ce n'est pas une liste d'exercices.
           </p>
-          <p className="text-lg text-noir max-w-2xl mx-auto">
-            Spécialement conçu pour les femmes sportives qui refusent de
-            renoncer à leur passion. Tu vas retrouver ta liberté de mouvement
-            et ta confiance.
+          <p className="text-lg text-noir mb-6">
+            C'est un accompagnement personnalisé qui contient :
           </p>
+          <div className="max-w-2xl mx-auto space-y-3 text-lg text-noir text-left">
+            <div className="flex items-start gap-3">
+              <span className="text-bordeaux text-xl">✔</span>
+              <p>séances guidées en vidéo</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-bordeaux text-xl">✔</span>
+              <p>programme structuré sur plusieurs semaines</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-bordeaux text-xl">✔</span>
+              <p>contact privilégié 6 jours sur 7</p>
+            </div>
+          </div>
         </div>
       </Section>
 
-      {/* 4. Pour qui est fait l'accompagnement */}
+      {/* 5. Distanciel comme avantage */}
+      <Section className="bg-gradient-to-b from-beige to-rose/20">
+        <div className="text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-bordeaux mb-6">
+            Pourquoi en ligne ?
+          </h2>
+          <div className="max-w-2xl mx-auto space-y-4 text-lg text-noir">
+            <p>
+              Parce que tu es une femme active.
+            </p>
+            <p>
+              Parce que tu n'as pas envie de courir au cabinet.
+            </p>
+            <p className="font-semibold text-bordeaux">
+              Parce que ton périnée doit fonctionner dans ton quotidien et ton sport, pas uniquement sur une table.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      {/* 6. Pour qui / Pas pour qui */}
       <Section className="bg-beige-light">
         <div>
           <h2 className="text-3xl md:text-4xl font-bold text-bordeaux mb-8 text-center">
-            Pour qui ?
+            RTP est fait pour toi si :
           </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-rose/20 rounded-2xl p-6">
-              <h3 className="text-xl font-bold text-bordeaux mb-3">
-                🏃‍♀️ Sportives
-              </h3>
-              <p className="text-noir">
-                Running, crossfit, sports collectifs, fitness... Tu veux
-                continuer à te dépasser sans limites.
-              </p>
+          <div className="max-w-2xl mx-auto space-y-3 text-lg text-noir mb-12">
+            <div className="flex items-start gap-3">
+              <span className="text-bordeaux text-xl">✔</span>
+              <p>tu es sportive</p>
             </div>
-            <div className="bg-rose/20 rounded-2xl p-6">
-              <h3 className="text-xl font-bold text-bordeaux mb-3">
-                👶 Post-partum
-              </h3>
-              <p className="text-noir">
-                Tu as accouché et tu veux retrouver ton corps d'avant, sans
-                compromis.
-              </p>
+            <div className="flex items-start gap-3">
+              <span className="text-bordeaux text-xl">✔</span>
+              <p>tu as des fuites à l'effort</p>
             </div>
-            <div className="bg-rose/20 rounded-2xl p-6 md:col-span-2">
-              <h3 className="text-xl font-bold text-bordeaux mb-3">
-                💪 Déçues de la rééducation classique
-              </h3>
-              <p className="text-noir">
-                Tu as déjà essayé une rééducation périnéale classique qui n'a
-                pas fonctionné. Tu mérites mieux.
-              </p>
+            <div className="flex items-start gap-3">
+              <span className="text-bordeaux text-xl">✔</span>
+              <p>tu veux comprendre ton corps</p>
             </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* 5. Ce que tu y trouves */}
-      <Section className="bg-gradient-to-b from-beige to-white">
-        <div>
-          <h2 className="text-3xl md:text-4xl font-bold text-bordeaux mb-8 text-center">
-            Ce que tu y trouves
-          </h2>
-          <div className="space-y-6">
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-bordeaux text-white rounded-full flex items-center justify-center font-bold text-xl">
-                1
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-bordeaux mb-2">
-                  Bilan personnalisé complet
-                </h3>
-                <p className="text-noir">
-                  On identifie ensemble tes besoins spécifiques et on crée un
-                  plan d'action sur-mesure.
-                </p>
-              </div>
+            <div className="flex items-start gap-3">
+              <span className="text-bordeaux text-xl">✔</span>
+              <p>tu refuses d'arrêter le sport</p>
             </div>
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-bordeaux text-white rounded-full flex items-center justify-center font-bold text-xl">
-                2
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-bordeaux mb-2">
-                  Exercices adaptés à ton sport
-                </h3>
-                <p className="text-noir">
-                  Pas de protocole générique. Des exercices pensés pour ta
-                  pratique sportive et tes objectifs.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-bordeaux text-white rounded-full flex items-center justify-center font-bold text-xl">
-                3
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-bordeaux mb-2">
-                  Suivi régulier et ajustements
-                </h3>
-                <p className="text-noir">
-                  On adapte le programme en fonction de tes progrès. Tu n'es
-                  jamais seule.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-bordeaux text-white rounded-full flex items-center justify-center font-bold text-xl">
-                4
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-bordeaux mb-2">
-                  Accompagnement 100% en ligne
-                </h3>
-                <p className="text-noir">
-                  Où que tu sois, quand tu veux. Flexibilité totale pour
-                  s'adapter à ta vie.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* 6. Résultats attendus */}
-      <Section className="bg-bordeaux text-white">
-        <div className="text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">
-            Les résultats que tu vas obtenir
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6 text-left">
-            <div className="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
-              <h3 className="text-xl font-bold mb-3">✅ Zéro fuites</h3>
-              <p>
-                Tu pratiques ton sport sans aucune fuite urinaire, même à
-                l'effort maximum.
-              </p>
-            </div>
-            <div className="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
-              <h3 className="text-xl font-bold mb-3">💪 Confiance retrouvée</h3>
-              <p>
-                Tu retrouves ta liberté de mouvement et ta sérénité pendant
-                l'effort.
-              </p>
-            </div>
-            <div className="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
-              <h3 className="text-xl font-bold mb-3">🏆 Performance</h3>
-              <p>
-                Tu peux te concentrer sur tes performances, pas sur tes
-                protections.
-              </p>
+            <div className="flex items-start gap-3">
+              <span className="text-bordeaux text-xl">✔</span>
+              <p>tu veux retrouver confiance en ton périnée</p>
             </div>
           </div>
         </div>
       </Section>
 
       {/* 7. Comment ça se passe (étapes verticales) */}
-      <Section className="bg-beige-light">
+      <Section className="bg-gradient-to-b from-rose/20 to-beige">
         <div>
-          <h2 className="text-3xl md:text-4xl font-bold text-bordeaux mb-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-bordeaux mb-6 text-center">
             Comment ça se passe
           </h2>
-          <div className="space-y-8">
-            <div className="flex flex-col md:flex-row items-start gap-6">
-              <div className="flex-shrink-0 w-16 h-16 bg-rose text-bordeaux rounded-full flex items-center justify-center font-bold text-2xl">
-                1
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-bordeaux mb-3">
-                  Bilan initial
-                </h3>
-                <p className="text-lg text-noir">
-                  On échange en visio pour comprendre ta situation, ton sport,
-                  tes objectifs. On crée ton plan personnalisé.
-                </p>
-              </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-rose/20 rounded-2xl p-6">
+              <h3 className="text-xl font-bold text-bordeaux mb-3 flex items-center gap-2">
+                <FaClipboardList className="text-bordeaux" />
+                Bilan initial
+              </h3>
+              <p className="text-noir">
+                On échange en visio pour comprendre ta situation, ton sport,
+                tes objectifs. On crée ton plan personnalisé.
+              </p>
             </div>
-            <div className="flex flex-col md:flex-row items-start gap-6">
-              <div className="flex-shrink-0 w-16 h-16 bg-rose text-bordeaux rounded-full flex items-center justify-center font-bold text-2xl">
-                2
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-bordeaux mb-3">
-                  Programme sur-mesure
-                </h3>
-                <p className="text-lg text-noir">
-                  Tu reçois tes exercices adaptés, avec vidéos et explications.
-                  Tu progresses à ton rythme.
-                </p>
-              </div>
+            <div className="bg-rose/20 rounded-2xl p-6">
+              <h3 className="text-xl font-bold text-bordeaux mb-3 flex items-center gap-2">
+                <FaUserMd className="text-bordeaux" />
+                Accompagnement sur-mesure
+              </h3>
+              <p className="text-noir">
+                Tu reçois ton accompagnement adapté, avec vidéos et explications.
+                Tu progresses à ton rythme.
+              </p>
             </div>
-            <div className="flex flex-col md:flex-row items-start gap-6">
-              <div className="flex-shrink-0 w-16 h-16 bg-rose text-bordeaux rounded-full flex items-center justify-center font-bold text-2xl">
-                3
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-bordeaux mb-3">
-                  Suivi régulier
-                </h3>
-                <p className="text-lg text-noir">
-                  On ajuste ensemble selon tes progrès. Questions, ajustements,
-                  motivation : je suis là.
-                </p>
-              </div>
+            <div className="bg-rose/20 rounded-2xl p-6">
+              <h3 className="text-xl font-bold text-bordeaux mb-3 flex items-center gap-2">
+                <FaComments className="text-bordeaux" />
+                Suivi régulier
+              </h3>
+              <p className="text-noir">
+                On ajuste ensemble selon tes progrès. Questions, ajustements,
+                motivation : je suis là.
+              </p>
             </div>
-            <div className="flex flex-col md:flex-row items-start gap-6">
-              <div className="flex-shrink-0 w-16 h-16 bg-rose text-bordeaux rounded-full flex items-center justify-center font-bold text-2xl">
-                4
-              </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-bordeaux mb-3">
-                  Résultats durables
-                </h3>
-                <p className="text-lg text-noir">
-                  Tu retrouves ton autonomie et ta liberté. Tu pratiques ton
-                  sport comme tu l'entends, sans limites.
-                </p>
-              </div>
+            <div className="bg-rose/20 rounded-2xl p-6">
+              <h3 className="text-xl font-bold text-bordeaux mb-3 flex items-center gap-2">
+                <FaTrophy className="text-bordeaux" />
+                Résultats durables
+              </h3>
+              <p className="text-noir">
+                Tu retrouves ta liberté, tu pratiques ton
+                sport comme tu l'entends, sans limites.
+              </p>
             </div>
           </div>
         </div>
       </Section>
 
       {/* 8. Témoignages avant / après (slider swipe) */}
-      <Section className="bg-gradient-to-b from-rose/20 to-beige">
+      <Section className="bg-beige-light">
         <div>
           <h2 className="text-3xl md:text-4xl font-bold text-bordeaux mb-8 text-center">
             Elles ont retrouvé leur liberté
@@ -284,61 +242,76 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* 9. Qui suis-je */}
-      <Section className="bg-beige-light">
+      {/* 9. Qui suis-je - Texte plus incarné */}
+      <Section className="bg-gradient-to-b from-rose/20 to-beige">
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-bordeaux mb-6">
             Qui suis-je ?
           </h2>
-          <div className="max-w-2xl mx-auto space-y-4 text-lg text-noir">
-            <p>
-              Je suis <strong className="text-bordeaux">Romane</strong>,
-              kinésithérapeute spécialisée en rééducation périnéale et
-              abdominale.
-            </p>
-            <p>
-              J'accompagne des femmes sportives et post-partum depuis plusieurs
-              années. J'ai vu trop de femmes renoncer à leur passion à cause
-              des fuites urinaires.
-            </p>
-            <p className="font-semibold text-bordeaux">
-              Mon objectif : te redonner ta liberté de mouvement et ta
-              confiance.
-            </p>
-            <div className="pt-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex flex-col md:flex-row items-center gap-8 mb-6">
+              <div className="flex-shrink-0">
+                <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-rose shadow-lg">
+                  <Image
+                    src="/images/romane.jpg"
+                    alt="Romane Lemarié - Kinésithérapeute spécialisée en rééducation périnéale"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 192px, 256px"
+                  />
+                </div>
+              </div>
+              <div className="flex-1 text-left md:text-center space-y-4 text-lg text-noir">
+                <p>
+                  Je m'appelle <strong className="text-bordeaux">Romane Lemarié</strong>,
+                  kinésithérapeute spécialisée en rééducation périnéale.
+                </p>
+                <p>
+                  J'accompagne des femmes sportives, post-partum,
+                  à retrouver un périnée fonctionnel, fort et compétent.
+                </p>
+                <p className="font-semibold text-bordeaux">
+                  Mon approche est globale, sans toucher vaginal.
+                </p>
+              </div>
+            </div>
+            <div className="pt-4">
               <Button href="/a-propos" variant="outline" className="px-6 py-3">
-                En savoir plus sur mon parcours
+                En savoir plus sur moi
               </Button>
             </div>
           </div>
         </div>
       </Section>
 
-      {/* 10. CTA final + contacts */}
+      {/* 10. CTA final plus engageant */}
       <Section className="bg-gradient-to-b from-bordeaux to-bordeaux-dark text-white">
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Prête à reprendre ton sport sans limites ?
+            Tu veux en finir avec les fuites ?
           </h2>
-          <p className="text-xl mb-8 opacity-90">
-            Rejoins les femmes qui ont retrouvé leur liberté de mouvement
+          <p className="text-xl mb-8 opacity-90 flex items-center justify-center gap-2">
+            <FaArrowRight />
+            Rejoins l'accompagnement RTP
           </p>
           <div className="space-y-4">
-            <Button
-              href="/contact"
-              variant="secondary"
-              className="px-8 py-4 text-lg md:text-xl"
-            >
-              Je démarre maintenant
-            </Button>
+            <div className="flex justify-center">
+              <Button
+                href="/contact"
+                variant="secondary"
+                className="px-8 py-4 text-lg md:text-xl flex items-center gap-2 max-w-xs md:max-w-sm"
+              >
+                <FaDumbbell /> Retrouver mon périnée
+              </Button>
+            </div>
             <div className="pt-8 space-y-2">
               <p className="text-lg font-semibold">Questions ?</p>
               <p className="opacity-90">
                 <a
-                  href="mailto:contact@rtp.fr"
+                  href="mailto:romane.lemarie.rtp@gmail.com"
                   className="underline hover:opacity-75"
                 >
-                  contact@rtp.fr
+                  romane.lemarie.rtp@gmail.com
                 </a>
               </p>
             </div>

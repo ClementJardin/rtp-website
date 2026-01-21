@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { FaDumbbell } from "react-icons/fa";
 
 export default function MobileCTA() {
   return (
@@ -8,9 +9,9 @@ export default function MobileCTA() {
       <div className="bg-bordeaux text-white p-4 shadow-2xl">
         <Link
           href="/contact"
-          className="block w-full text-center font-bold text-lg py-3 bg-white text-bordeaux rounded-full hover:bg-rose transition-colors"
+          className="flex items-center justify-center gap-2 w-full text-center font-bold text-lg py-3 bg-white text-bordeaux rounded-full hover:bg-rose transition-colors"
         >
-          Je démarre maintenant
+          <FaDumbbell /> Retrouver mon périnée
         </Link>
       </div>
     </div>

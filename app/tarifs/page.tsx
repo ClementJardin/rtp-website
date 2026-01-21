@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function TarifsPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen pb-20 md:pb-0">
       <Header />
 
       {/* Hero */}

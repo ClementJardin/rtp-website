@@ -9,25 +9,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Charte graphique : fond #f8f4ec, bordeaux #b7938a - Contraste renforcé
+        // Charte graphique sportive : couleurs dynamiques mais moins agressives
         bordeaux: {
-          DEFAULT: "#b7938a", // Bordeaux principal
-          dark: "#8a6d63", // Plus foncé pour les contrastes renforcés
-          light: "#c5a99f", // Plus clair pour les variantes
+          DEFAULT: "#B85C5C", // Bordeaux chaleureux, moins rouge sang
+          dark: "#9A4545", // Plus foncé pour les contrastes
+          light: "#D47A7A", // Plus clair pour les variantes
         },
         rose: {
-          DEFAULT: "#e8d5c4", // Rose subtil harmonisé avec le bordeaux
-          light: "#f2e5d8", // Encore plus clair
-          dark: "#d4c0b0", // Légèrement plus foncé
+          DEFAULT: "#E8B4B4", // Rose doux et chaleureux
+          light: "#F2D0D0", // Encore plus clair
+          dark: "#D99A9A", // Légèrement plus foncé
         },
         beige: {
-          DEFAULT: "#f8f4ec", // Fond principal
-          light: "#fbf9f5", // Très clair
-          dark: "#ede6dc", // Légèrement plus foncé
+          DEFAULT: "#F5F0E8", // Fond principal légèrement plus contrasté
+          light: "#FAF7F2", // Très clair
+          dark: "#E8E0D4", // Légèrement plus foncé
         },
         noir: {
-          DEFAULT: "#3d352f", // Texte principal beaucoup plus foncé pour meilleur contraste
-          light: "#5a4f47", // Version plus claire mais toujours lisible
+          DEFAULT: "#2C2418", // Texte principal très foncé pour contraste maximum
+          light: "#4A3F2F", // Version plus claire mais toujours lisible
+        },
+        accent: {
+          DEFAULT: "#E67E5A", // Orange corail doux pour les accents dynamiques
+          dark: "#C85D3A", // Plus foncé
+          light: "#F29A7A", // Plus clair
         },
       },
       fontFamily: {

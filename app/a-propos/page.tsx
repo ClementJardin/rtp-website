@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import MobileCTA from "@/components/MobileCTA";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
+import Image from "next/image";
 
 export const metadata = {
   title: "À propos - Romane Kinésithérapeute",
@@ -11,42 +12,40 @@ export const metadata = {
 
 export default function AProposPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen pb-20 md:pb-0">
       <Header />
-
-      {/* Hero */}
-      <section className="min-h-[60vh] flex items-center justify-center px-4 pt-24 pb-16 bg-gradient-to-b from-beige to-rose/20">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-bordeaux mb-6">
-            À propos
-          </h1>
-          <p className="text-xl text-noir">
-            Qui je suis et pourquoi je fais ce que je fais
-          </p>
-        </div>
-      </section>
-
       {/* Mon parcours */}
       <Section className="bg-beige-light">
         <div className="space-y-8">
           <div>
-            <h2 className="text-3xl font-bold text-bordeaux mb-6">
-              Bonjour, je suis Romane
+            <h2 className="text-3xl text-center font-bold text-bordeaux mt-12 mb-6">
+              Bonjour, je suis Romane !
             </h2>
-            <div className="space-y-4 text-lg text-noir">
-              <p>
-                Kinésithérapeute spécialisée en rééducation périnéale et
-                abdominale, j'accompagne des femmes sportives et post-partum
-                depuis plusieurs années.
-              </p>
-              <p>
-                J'ai choisi cette spécialité parce que j'ai vu trop de femmes
-                renoncer à leur passion, à leur sport, à leur liberté de
-                mouvement à cause des fuites urinaires.
-              </p>
-              <p className="font-semibold text-bordeaux">
-                Ça me révolte. Et ça me motive.
-              </p>
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="flex-shrink-0">
+                <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-rose shadow-lg">
+                  <Image
+                    src="/images/romane.jpg"
+                    alt="Romane Lemarié - Kinésithérapeute spécialisée en rééducation périnéale"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 192px, 256px"
+                  />
+                </div>
+              </div>
+              <div className="flex-1 text-left md:text-center space-y-4 text-lg text-noir">
+                <p>
+                  Je m'appelle <strong className="text-bordeaux">Romane Lemarié</strong>,
+                  kinésithérapeute spécialisée en rééducation périnéale.
+                </p>
+                <p>
+                  J'accompagne des femmes sportives, post-partum,
+                  à retrouver un périnée fonctionnel, fort et compétent.
+                </p>
+                <p className="font-semibold text-bordeaux">
+                  Mon approche est globale, sans toucher vaginal.
+                </p>
+              </div>
             </div>
           </div>
 

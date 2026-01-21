@@ -18,12 +18,6 @@ export default function Header() {
           {/* Menu desktop */}
           <div className="hidden md:flex items-center gap-6">
             <Link
-              href="/accompagnement"
-              className="text-bordeaux hover:text-bordeaux transition-colors"
-            >
-              Accompagnement
-            </Link>
-            <Link
               href="/a-propos"
               className="text-bordeaux hover:text-bordeaux transition-colors"
             >
@@ -77,13 +71,6 @@ export default function Header() {
         {/* Menu mobile déroulant */}
         {isMenuOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-3 animate-fade-in">
-            <Link
-              href="/accompagnement"
-              className="block text-bordeaux hover:text-bordeaux transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Accompagnement
-            </Link>
             <Link
               href="/a-propos"
               className="block text-bordeaux hover:text-bordeaux transition-colors"
