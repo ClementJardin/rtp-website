@@ -5,6 +5,7 @@ import MobileCTA from "@/components/MobileCTA";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -28,12 +29,33 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulation d'envoi (à remplacer par un vrai endpoint)
-    setTimeout(() => {
+    try {
+      // Remplacez ces valeurs par vos clés EmailJS
+      // Vous les trouverez dans votre compte EmailJS
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "YOUR_SERVICE_ID";
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "YOUR_TEMPLATE_ID";
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY";
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: "romane.lemarie.rtp@gmail.com",
+        },
+        publicKey
+      );
+
       setIsSubmitting(false);
       setIsSubmitted(true);
       setFormData({ name: "", email: "", message: "" });
-    }, 1000);
+    } catch (error) {
+      console.error("Erreur lors de l'envoi:", error);
+      setIsSubmitting(false);
+      alert("Une erreur est survenue. Veuillez réessayer ou m'envoyer un email directement à romane.lemarie.rtp@gmail.com");
+    }
   };
 
   return (
