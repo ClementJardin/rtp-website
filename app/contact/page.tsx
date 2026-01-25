@@ -5,6 +5,7 @@ import MobileCTA from "@/components/MobileCTA";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
 import { useState } from "react";
+import { FaInstagram } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 
 export default function ContactPage() {
@@ -170,14 +171,25 @@ export default function ContactPage() {
               <h2 className="text-2xl font-bold text-bordeaux">
                 Ou contacte-moi directement
               </h2>
-              <p className="text-lg text-noir">
+              <div className="space-y-3">
+                <p className="text-lg text-noir">
+                  <a
+                    href="mailto:romane.lemarie.rtp@gmail.com"
+                    className="text-bordeaux hover:underline font-semibold"
+                  >
+                    romane.lemarie.rtp@gmail.com
+                  </a>
+                </p>
                 <a
-                  href="mailto:romane.lemarie.rtp@gmail.com"
-                  className="text-bordeaux hover:underline font-semibold"
+                  href="https://www.instagram.com/retrouve_ton_perinee"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-bordeaux hover:text-bordeaux-dark transition-colors font-semibold"
                 >
-                  romane.lemarie.rtp@gmail.com
+                  <FaInstagram className="text-xl" />
+                  <span>Suis-moi sur Instagram</span>
                 </a>
-              </p>
+              </div>
             </div>
           </div>
         </div>

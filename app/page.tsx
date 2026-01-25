@@ -4,7 +4,7 @@ import Section from "@/components/Section";
 import Button from "@/components/Button";
 import TestimonialSlider from "@/components/TestimonialSlider";
 import Image from "next/image";
-import { FaCheckCircle, FaHeart, FaInfoCircle, FaArrowRight, FaLightbulb, FaDumbbell, FaClipboardList, FaUserMd, FaComments, FaTrophy } from "react-icons/fa";
+import { FaCheckCircle, FaHeart, FaInfoCircle, FaArrowRight, FaLightbulb, FaDumbbell, FaClipboardList, FaUserMd, FaComments, FaTrophy, FaInstagram } from "react-icons/fa";
 
 export default function Home() {
   return (
@@ -275,10 +275,19 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="pt-4">
+            <div className="pt-4 flex flex-col md:flex-row items-center justify-center gap-4">
               <Button href="/a-propos" variant="outline" className="px-6 py-3">
                 En savoir plus sur moi
               </Button>
+              <a
+                href="https://www.instagram.com/retrouve_ton_perinee"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-bordeaux hover:text-bordeaux-dark transition-colors font-semibold"
+              >
+                <FaInstagram className="text-xl" />
+                <span>Suis-moi sur Instagram</span>
+              </a>
             </div>
           </div>
         </div>
