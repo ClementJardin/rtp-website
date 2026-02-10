@@ -7,6 +7,7 @@ import Button from "@/components/Button";
 import { useState } from "react";
 import { FaInstagram } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
+import { track } from "@vercel/analytics";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -52,9 +53,11 @@ export default function ContactPage() {
       setIsSubmitting(false);
       setIsSubmitted(true);
       setFormData({ name: "", email: "", message: "" });
+      track("form_submit", { form_type: "contact", success: true });
     } catch (error) {
       console.error("Erreur lors de l'envoi:", error);
       setIsSubmitting(false);
+      track("form_submit", { form_type: "contact", success: false });
       alert("Une erreur est survenue. Veuillez réessayer ou m'envoyer un email directement à romane.lemarie.rtp@gmail.com");
     }
   };
@@ -158,6 +161,8 @@ export default function ContactPage() {
                   type="submit"
                   variant="primary"
                   className="w-full md:w-auto px-8 py-4 text-lg"
+                  eventName="button_click"
+                  eventData={{ location: "contact_form", action: "envoyer_message" }}
                 >
                   {isSubmitting ? "Envoi en cours..." : "Envoyer le message"}
                 </Button>
@@ -176,6 +181,7 @@ export default function ContactPage() {
                   <a
                     href="mailto:romane.lemarie.rtp@gmail.com"
                     className="text-bordeaux hover:underline font-semibold"
+                    onClick={() => track("email_click", { location: "contact_page" })}
                   >
                     romane.lemarie.rtp@gmail.com
                   </a>
@@ -185,6 +191,7 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-bordeaux hover:text-bordeaux-dark transition-colors font-semibold"
+                  onClick={() => track("external_link_click", { platform: "instagram", location: "contact_page" })}
                 >
                   <FaInstagram className="text-xl" />
                   <span>Suis-moi sur Instagram</span>
@@ -208,6 +215,8 @@ export default function ContactPage() {
             href="/"
             variant="secondary"
             className="px-8 py-4 text-lg"
+            eventName="button_click"
+            eventData={{ location: "contact_cta", action: "decouvrir_programme" }}
           >
             Découvrir le programme
           </Button>

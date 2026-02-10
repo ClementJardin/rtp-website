@@ -145,6 +145,8 @@ export default function AProposPage() {
             href="/contact"
             variant="secondary"
             className="px-8 py-4 text-lg"
+            eventName="cta_click"
+            eventData={{ location: "a_propos", action: "je_demarre_maintenant" }}
           >
             Je démarre maintenant
           </Button>

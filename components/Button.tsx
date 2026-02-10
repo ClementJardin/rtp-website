@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { ReactNode } from "react";
+import { track } from "@vercel/analytics";
 
 interface ButtonProps {
   children: ReactNode;
@@ -8,6 +11,8 @@ interface ButtonProps {
   type?: "button" | "submit" | "reset";
   variant?: "primary" | "secondary" | "outline";
   className?: string;
+  eventName?: string;
+  eventData?: Record<string, string | number | boolean>;
 }
 
 export default function Button({
@@ -17,6 +22,8 @@ export default function Button({
   type = "button",
   variant = "primary",
   className = "",
+  eventName,
+  eventData,
 }: ButtonProps) {
   const baseStyles =
     "inline-block text-center font-semibold rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95";
@@ -30,16 +37,29 @@ export default function Button({
 
   const styles = `${baseStyles} ${variants[variant]} ${className}`;
 
+  const handleClick = () => {
+    if (eventName) {
+      track(eventName, eventData);
+    }
+    if (onClick) {
+      onClick();
+    }
+  };
+
   if (href) {
     return (
-      <Link href={href} className={styles}>
+      <Link 
+        href={href} 
+        className={styles}
+        onClick={eventName ? handleClick : undefined}
+      >
         {children}
       </Link>
     );
   }
 
   return (
-    <button type={type} onClick={onClick} className={styles}>
+    <button type={type} onClick={handleClick} className={styles}>
       {children}
     </button>
   );

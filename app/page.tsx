@@ -1,3 +1,5 @@
+"use client";
+
 import Header from "@/components/Header";
 import MobileCTA from "@/components/MobileCTA";
 import Section from "@/components/Section";
@@ -5,6 +7,7 @@ import Button from "@/components/Button";
 import TestimonialSlider from "@/components/TestimonialSlider";
 import Image from "next/image";
 import { FaCheckCircle, FaHeart, FaInfoCircle, FaArrowRight, FaLightbulb, FaDumbbell, FaClipboardList, FaUserMd, FaComments, FaTrophy, FaInstagram } from "react-icons/fa";
+import { track } from "@vercel/analytics";
 
 export default function Home() {
   return (
@@ -27,6 +30,8 @@ export default function Home() {
               href="/contact"
               variant="primary"
               className="px-8 py-4 text-lg md:text-xl flex items-center gap-2 max-w-xs md:max-w-sm"
+              eventName="cta_click"
+              eventData={{ location: "hero", action: "retrouver_mon_perinee" }}
             >
               <FaDumbbell /> Retrouver mon périnée
             </Button>
@@ -276,7 +281,13 @@ export default function Home() {
               </div>
             </div>
             <div className="pt-4 flex flex-col md:flex-row items-center justify-center gap-4">
-              <Button href="/a-propos" variant="outline" className="px-6 py-3">
+              <Button 
+                href="/a-propos" 
+                variant="outline" 
+                className="px-6 py-3"
+                eventName="button_click"
+                eventData={{ location: "about_section", action: "en_savoir_plus" }}
+              >
                 En savoir plus sur moi
               </Button>
               <a
@@ -284,6 +295,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-bordeaux hover:text-bordeaux-dark transition-colors font-semibold"
+                onClick={() => track("external_link_click", { platform: "instagram", location: "about_section" })}
               >
                 <FaInstagram className="text-xl" />
                 <span>Suis-moi sur Instagram</span>
@@ -309,6 +321,8 @@ export default function Home() {
                 href="/contact"
                 variant="secondary"
                 className="px-8 py-4 text-lg md:text-xl flex items-center gap-2 max-w-xs md:max-w-sm"
+                eventName="cta_click"
+                eventData={{ location: "final_cta", action: "retrouver_mon_perinee" }}
               >
                 <FaDumbbell /> Retrouver mon périnée
               </Button>
@@ -319,6 +333,7 @@ export default function Home() {
                 <a
                   href="mailto:romane.lemarie.rtp@gmail.com"
                   className="underline hover:opacity-75"
+                  onClick={() => track("email_click", { location: "home_final_cta" })}
                 >
                   romane.lemarie.rtp@gmail.com
                 </a>

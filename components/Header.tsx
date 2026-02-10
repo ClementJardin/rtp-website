@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { track } from "@vercel/analytics";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,7 +12,11 @@ export default function Header() {
       {/* Header minimal sur mobile - masqué par défaut, visible au scroll */}
       <nav className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-bordeaux">
+          <Link 
+            href="/" 
+            className="text-xl font-bold text-bordeaux"
+            onClick={() => track("navigation_click", { location: "header", destination: "home" })}
+          >
             RTP
           </Link>
           
@@ -20,18 +25,21 @@ export default function Header() {
             <Link
               href="/a-propos"
               className="text-bordeaux hover:text-bordeaux transition-colors"
+              onClick={() => track("navigation_click", { location: "header", destination: "a_propos" })}
             >
               À propos
             </Link>
             <Link
               href="/tarifs"
               className="text-bordeaux hover:text-bordeaux transition-colors"
+              onClick={() => track("navigation_click", { location: "header", destination: "tarifs" })}
             >
               Tarifs
             </Link>
             <Link
               href="/contact"
               className="bg-bordeaux text-white px-4 py-2 rounded-full hover:bg-bordeaux-dark transition-colors"
+              onClick={() => track("navigation_click", { location: "header", destination: "contact" })}
             >
               Contact
             </Link>
@@ -74,21 +82,30 @@ export default function Header() {
             <Link
               href="/a-propos"
               className="block text-bordeaux hover:text-bordeaux transition-colors"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                setIsMenuOpen(false);
+                track("navigation_click", { location: "header_mobile", destination: "a_propos" });
+              }}
             >
               À propos
             </Link>
             <Link
               href="/tarifs"
               className="block text-bordeaux hover:text-bordeaux transition-colors"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                setIsMenuOpen(false);
+                track("navigation_click", { location: "header_mobile", destination: "tarifs" });
+              }}
             >
               Tarifs
             </Link>
             <Link
               href="/contact"
               className="block bg-bordeaux text-white px-4 py-2 rounded-full text-center hover:bg-bordeaux-dark transition-colors"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                setIsMenuOpen(false);
+                track("navigation_click", { location: "header_mobile", destination: "contact" });
+              }}
             >
               Contact
             </Link>

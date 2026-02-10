@@ -141,6 +141,8 @@ export default function TarifsPage() {
             href="/contact"
             variant="secondary"
             className="px-8 py-4 text-lg"
+            eventName="cta_click"
+            eventData={{ location: "tarifs", action: "demander_devis" }}
           >
             Je demande un devis
           </Button>
