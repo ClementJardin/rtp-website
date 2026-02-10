@@ -1,6 +1,7 @@
 "use client";
 
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import MobileCTA from "@/components/MobileCTA";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
@@ -224,6 +225,7 @@ export default function ContactPage() {
       </Section>
 
       <MobileCTA />
+      <Footer />
     </main>
   );
 }

@@ -24,21 +24,23 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-6">
             <Link
               href="/a-propos"
-              className="text-bordeaux hover:text-bordeaux transition-colors"
+              className="text-bordeaux hover:text-bordeaux-dark transition-colors font-medium relative group"
               onClick={() => track("navigation_click", { location: "header", destination: "a_propos" })}
             >
               À propos
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-bordeaux transition-all duration-300 group-hover:w-full"></span>
             </Link>
             <Link
               href="/tarifs"
-              className="text-bordeaux hover:text-bordeaux transition-colors"
+              className="text-bordeaux hover:text-bordeaux-dark transition-colors font-medium relative group"
               onClick={() => track("navigation_click", { location: "header", destination: "tarifs" })}
             >
               Tarifs
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-bordeaux transition-all duration-300 group-hover:w-full"></span>
             </Link>
             <Link
               href="/contact"
-              className="bg-bordeaux text-white px-4 py-2 rounded-full hover:bg-bordeaux-dark transition-colors"
+              className="bg-bordeaux text-white px-4 py-2 rounded-full hover:bg-bordeaux-dark transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
               onClick={() => track("navigation_click", { location: "header", destination: "contact" })}
             >
               Contact

@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import MobileCTA from "@/components/MobileCTA";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
@@ -142,7 +143,7 @@ export default function AProposPage() {
             Rejoins les femmes qui ont retrouvé leur liberté
           </p>
           <Button
-            href="/contact"
+            href="/tarifs"
             variant="secondary"
             className="px-8 py-4 text-lg"
             eventName="cta_click"
@@ -154,6 +155,7 @@ export default function AProposPage() {
       </Section>
 
       <MobileCTA />
+      <Footer />
     </main>
   );
 }

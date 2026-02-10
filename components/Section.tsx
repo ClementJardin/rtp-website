@@ -10,7 +10,7 @@ export default function Section({ children, className = "", id }: SectionProps) 
   return (
     <section
       id={id}
-      className={`py-12 md:py-16 px-4 md:px-6 ${className}`}
+      className={`py-16 md:py-20 px-4 md:px-6 ${className}`}
     >
       <div className="container mx-auto max-w-4xl">{children}</div>
     </section>

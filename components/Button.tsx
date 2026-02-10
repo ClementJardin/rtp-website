@@ -26,7 +26,7 @@ export default function Button({
   eventData,
 }: ButtonProps) {
   const baseStyles =
-    "inline-block text-center font-semibold rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95";
+    "inline-block text-center font-semibold rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-bordeaux focus:ring-offset-2 shadow-md hover:shadow-lg";
   
   const variants = {
     primary: "bg-bordeaux text-white hover:bg-bordeaux-dark shadow-lg",
