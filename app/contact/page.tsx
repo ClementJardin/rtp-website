@@ -1,231 +1,75 @@
-"use client";
-
+import type { Metadata } from "next";
+import Link from "next/link";
+import { FaEnvelope, FaInstagram } from "react-icons/fa";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import MobileCTA from "@/components/MobileCTA";
-import Section from "@/components/Section";
-import Button from "@/components/Button";
-import { useState } from "react";
-import { FaInstagram } from "react-icons/fa";
-import emailjs from "@emailjs/browser";
-import { track } from "@vercel/analytics";
+import ContactForm from "@/components/ContactForm";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Une question sur l'accompagnement RTP ? Écris à Romane sur Instagram, par email ou via le formulaire.",
+};
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      // Remplacez ces valeurs par vos clés EmailJS
-      // Vous les trouverez dans votre compte EmailJS
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "YOUR_SERVICE_ID";
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "YOUR_TEMPLATE_ID";
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY";
-
-      await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_email: "romane.lemarie.rtp@gmail.com",
-        },
-        publicKey
-      );
-
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({ name: "", email: "", message: "" });
-      track("form_submit", { form_type: "contact", success: true });
-    } catch (error) {
-      console.error("Erreur lors de l'envoi:", error);
-      setIsSubmitting(false);
-      track("form_submit", { form_type: "contact", success: false });
-      alert("Une erreur est survenue. Veuillez réessayer ou m'envoyer un email directement à romane.lemarie.rtp@gmail.com");
-    }
-  };
-
   return (
-    <main className="min-h-screen pb-20 md:pb-0">
+    <>
       <Header />
-
-      {/* Hero */}
-      <section className="min-h-[60vh] flex items-center justify-center px-4 pt-24 pb-16 bg-gradient-to-b from-beige to-rose/20">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-bordeaux mb-6">
-            Contact
-          </h1>
-          <p className="text-xl text-noir">
-            On discute de ton projet ?
-          </p>
-        </div>
-      </section>
-
-      {/* Formulaire de contact */}
-      <Section className="bg-beige-light">
-        <div className="max-w-2xl mx-auto">
-          {isSubmitted ? (
-            <div className="text-center bg-rose/20 rounded-2xl p-8">
-              <h2 className="text-2xl font-bold text-bordeaux mb-4">
-                Message envoyé !
-              </h2>
-              <p className="text-lg text-noir mb-6">
-              Je te réponds dans les plus brefs délais.
+      <main className="pt-16">
+        <section className="py-12 md:py-20">
+          <div className="wrap grid gap-12 md:grid-cols-2 md:gap-16">
+            <div>
+              <h1 className="display text-6xl text-vin md:text-8xl">On en parle&nbsp;?</h1>
+              <p className="mt-5 max-w-md text-lg text-encre-doux">
+                Le plus simple pour commencer&nbsp;: le test en 2 minutes. Tu peux aussi m&apos;écrire
+                directement.
               </p>
-              <Button
-                onClick={() => setIsSubmitted(false)}
-                variant="primary"
-                className="px-6 py-3"
-              >
-                Envoyer un autre message
-              </Button>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-bordeaux font-semibold mb-2"
-                >
-                  Ton prénom
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-lg border-2 border-rose focus:border-bordeaux focus:outline-none transition-colors"
-                  placeholder="Ton prénom"
-                />
-              </div>
 
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-bordeaux font-semibold mb-2"
+              <div className="mt-8 space-y-3">
+                <Link
+                  href="/test"
+                  className="block rounded-[1.5rem] bg-vin p-5 text-sable transition-colors hover:bg-vin-clair"
                 >
-                  Ton email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-lg border-2 border-rose focus:border-bordeaux focus:outline-none transition-colors"
-                  placeholder="ton@email.com"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-bordeaux font-semibold mb-2"
-                >
-                  Ton message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 rounded-lg border-2 border-rose focus:border-bordeaux focus:outline-none transition-colors resize-none"
-                  placeholder="Parle-moi de ta situation, de ton sport, de tes objectifs..."
-                />
-              </div>
-
-              <div className="pt-4">
-                <Button
-                  type="submit"
-                  variant="primary"
-                  className="w-full md:w-auto px-8 py-4 text-lg"
-                  eventName="button_click"
-                  eventData={{ location: "contact_form", action: "envoyer_message" }}
-                >
-                  {isSubmitting ? "Envoi en cours..." : "Envoyer le message"}
-                </Button>
-              </div>
-            </form>
-          )}
-
-          {/* Contact direct */}
-          <div className="mt-12 pt-12 border-t border-rose/30">
-            <div className="text-center space-y-4">
-              <h2 className="text-2xl font-bold text-bordeaux">
-                Ou contacte-moi directement
-              </h2>
-              <div className="space-y-3">
-                <p className="text-lg text-noir">
-                  <a
-                    href="mailto:romane.lemarie.rtp@gmail.com"
-                    className="text-bordeaux hover:underline font-semibold"
-                    onClick={() => track("email_click", { location: "contact_page" })}
-                  >
-                    romane.lemarie.rtp@gmail.com
-                  </a>
-                </p>
+                  <span className="titre block text-2xl text-poudre">Faire le test (2 min)</span>
+                  <span className="mt-1 block text-sable/80">
+                    5 questions sur ta situation. Je te réponds personnellement.
+                  </span>
+                </Link>
                 <a
-                  href="https://www.instagram.com/retrouve_ton_perinee"
+                  href={site.instagramDm}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-bordeaux hover:text-bordeaux-dark transition-colors font-semibold"
-                  onClick={() => track("external_link_click", { platform: "instagram", location: "contact_page" })}
+                  className="flex items-center gap-4 rounded-[1.5rem] bg-poudre-pale p-5 transition-colors hover:bg-poudre"
                 >
-                  <FaInstagram className="text-xl" />
-                  <span>Suis-moi sur Instagram</span>
+                  <FaInstagram className="shrink-0 text-2xl text-vin" aria-hidden />
+                  <span>
+                    <span className="block font-bold">M&apos;écrire sur Instagram</span>
+                    <span className="text-encre-doux">{site.instagramHandle}</span>
+                  </span>
+                </a>
+                <a
+                  href={`mailto:${site.email}`}
+                  className="flex items-center gap-4 rounded-[1.5rem] bg-poudre-pale p-5 transition-colors hover:bg-poudre"
+                >
+                  <FaEnvelope className="shrink-0 text-2xl text-vin" aria-hidden />
+                  <span className="min-w-0">
+                    <span className="block font-bold">M&apos;envoyer un email</span>
+                    <span className="block break-all text-encre-doux">{site.email}</span>
+                  </span>
                 </a>
               </div>
             </div>
+
+            <div>
+              <h2 className="titre text-3xl text-vin">Ou laisse-moi un message</h2>
+              <div className="mt-6">
+                <ContactForm />
+              </div>
+            </div>
           </div>
-        </div>
-      </Section>
-
-      {/* CTA */}
-      <Section className="bg-gradient-to-b from-bordeaux to-bordeaux-dark text-white">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold mb-6">
-            Prête à commencer ?
-          </h2>
-          <p className="text-xl mb-8 opacity-90">
-            Rejoins les femmes qui ont retrouvé leur liberté
-          </p>
-          <Button
-            href="/"
-            variant="secondary"
-            className="px-8 py-4 text-lg"
-            eventName="button_click"
-            eventData={{ location: "contact_cta", action: "decouvrir_programme" }}
-          >
-            Découvrir le programme
-          </Button>
-        </div>
-      </Section>
-
-      <MobileCTA />
+        </section>
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

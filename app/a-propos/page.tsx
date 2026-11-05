@@ -1,161 +1,122 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import { FaInstagram } from "react-icons/fa";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import MobileCTA from "@/components/MobileCTA";
-import Section from "@/components/Section";
-import Button from "@/components/Button";
-import Image from "next/image";
+import StickyCta from "@/components/StickyCta";
+import Cta from "@/components/Cta";
+import { site } from "@/lib/site";
 
-export const metadata = {
-  title: "À propos - Romane Kinésithérapeute",
+export const metadata: Metadata = {
+  title: "Qui suis-je",
   description:
-    "Découvre le parcours de Romane, kinésithérapeute spécialisée en rééducation périnéale et abdominale pour femmes sportives.",
+    "Romane Lemarié, kinésithérapeute spécialisée en rééducation périnéale et abdominale. Une approche globale, sans toucher vaginal, pensée pour les sportives.",
 };
+
+const approche = [
+  { title: "Sur-mesure", desc: "Chaque programme est créé pour toi. Pas de copier-coller." },
+  { title: "Orientée résultats", desc: "On vise du concret et du durable. Pas de promesses vides." },
+  { title: "Bienveillante", desc: "Directe et décomplexée, mais toujours dans la bienveillance." },
+  { title: "Motivante", desc: "Je suis là pour te pousser et te faire croire en tes capacités." },
+];
+
+const convictions = [
+  "Chaque femme mérite de pratiquer son sport sans limites, sans compromis, sans protection à vie.",
+  "La rééducation périnéale doit être personnalisée et pensée pour le sport. Pas de protocole générique.",
+  "L'accompagnement en ligne offre une souplesse et une accessibilité que le cabinet ne permet pas.",
+];
 
 export default function AProposPage() {
   return (
-    <main className="min-h-screen pb-20 md:pb-0">
+    <>
       <Header />
-      {/* Mon parcours */}
-      <Section className="bg-beige-light">
-        <div className="space-y-8">
-          <div>
-            <h2 className="text-3xl text-center font-bold text-bordeaux mt-12 mb-6">
-              Bonjour, je suis Romane !
-            </h2>
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-shrink-0">
-                <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-rose shadow-lg">
-                  <Image
-                    src="/images/romane.jpg"
-                    alt="Romane Lemarié - Kinésithérapeute spécialisée en rééducation périnéale"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 192px, 256px"
-                  />
-                </div>
-              </div>
-              <div className="flex-1 text-left md:text-center space-y-4 text-lg text-noir">
+      <main className="pt-16">
+        <section className="py-12 md:py-20">
+          <div className="wrap grid items-center gap-10 md:grid-cols-2 md:gap-16">
+            <div className="order-2 md:order-1">
+              <h1 className="display text-6xl text-vin md:text-8xl">Bonjour, moi c&apos;est Romane.</h1>
+              <div className="mt-6 space-y-4 text-lg">
                 <p>
-                  Je m'appelle <strong className="text-bordeaux">Romane Lemarié</strong>,
-                  kinésithérapeute spécialisée en rééducation périnéale.
+                  Je suis <strong>{site.coach}</strong>, kinésithérapeute spécialisée en rééducation
+                  périnéale et abdominale.
                 </p>
                 <p>
-                  J'accompagne des femmes sportives, post-partum,
-                  à retrouver un périnée fonctionnel, fort et compétent.
+                  J&apos;accompagne les femmes sportives et post-partum à retrouver un périnée
+                  fonctionnel, fort et compétent.
                 </p>
-                <p className="font-semibold text-bordeaux">
-                  Mon approche est globale, sans toucher vaginal.
-                </p>
+                <p className="font-bold text-vin">Mon approche est globale, sans toucher vaginal.</p>
               </div>
             </div>
-          </div>
-
-          <div>
-            <h2 className="text-3xl font-bold text-bordeaux mb-6">
-              Ma vision
-            </h2>
-            <div className="space-y-4 text-lg text-noir">
-              <p>
-                Je crois que chaque femme mérite de pratiquer son sport sans
-                limites, sans compromis, sans protection à vie.
-              </p>
-              <p>
-                Je crois que la rééducation périnéale doit être personnalisée,
-                adaptée, et pensée pour le sport. Pas de protocole générique qui
-                ne fonctionne pas.
-              </p>
-              <p>
-                Je crois que l'accompagnement en ligne permet une flexibilité et
-                une accessibilité que la rééducation classique ne peut pas
-                offrir.
-              </p>
+            <div className="relative order-1 aspect-[4/5] overflow-hidden rounded-[2rem] bg-sable-fonce md:order-2">
+              <Image
+                src="/images/romane.jpg"
+                alt="Romane Lemarié, kinésithérapeute"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover object-[50%_20%]"
+              />
             </div>
           </div>
+        </section>
 
-          <div>
-            <h2 className="text-3xl font-bold text-bordeaux mb-6">
-              Mon approche
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-rose/20 rounded-2xl p-6">
-                <h3 className="text-xl font-bold text-bordeaux mb-3">
-                  🎯 Sur-mesure
-                </h3>
-                <p className="text-noir">
-                  Chaque programme est créé spécifiquement pour toi. Pas de
-                  copier-coller.
-                </p>
-              </div>
-              <div className="bg-rose/20 rounded-2xl p-6">
-                <h3 className="text-xl font-bold text-bordeaux mb-3">
-                  💪 Orienté résultats
-                </h3>
-                <p className="text-noir">
-                  On vise des résultats concrets et durables. Pas de promesses
-                  vides.
-                </p>
-              </div>
-              <div className="bg-rose/20 rounded-2xl p-6">
-                <h3 className="text-xl font-bold text-bordeaux mb-3">
-                  🤝 Bienveillant
-                </h3>
-                <p className="text-noir">
-                  Un accompagnement décomplexé, direct, mais toujours
-                  bienveillant.
-                </p>
-              </div>
-              <div className="bg-rose/20 rounded-2xl p-6">
-                <h3 className="text-xl font-bold text-bordeaux mb-3">
-                  🚀 Motivant
-                </h3>
-                <p className="text-noir">
-                  Je suis là pour te pousser, te motiver, te faire croire en tes
-                  capacités.
-                </p>
-              </div>
-            </div>
+        <section className="bg-encre py-16 text-sable md:py-24">
+          <div className="wrap">
+            <h2 className="titre text-[2.6rem] md:text-6xl">Ce en quoi je crois</h2>
+            <ul className="mt-10 grid gap-8 md:grid-cols-3">
+              {convictions.map((c) => (
+                <li key={c} className="titre text-2xl leading-tight text-poudre">
+                  {c}
+                </li>
+              ))}
+            </ul>
           </div>
+        </section>
 
-          <div>
-            <h2 className="text-3xl font-bold text-bordeaux mb-6">
-              Pourquoi RTP ?
-            </h2>
-            <p className="text-lg text-noir mb-4">
-              RTP, c'est Retrouve Ton Périnée. Mais c'est aussi Retrouve Ta
-              Puissance, Retrouve Ta Passion, Retrouve Ta Liberté.
+        <section className="py-16 md:py-24">
+          <div className="wrap">
+            <h2 className="titre text-[2.6rem] text-vin md:text-6xl">Ma façon de travailler</h2>
+            <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+              {approche.map((a) => (
+                <li key={a.title} className="rounded-2xl bg-poudre-pale p-6">
+                  <p className="titre text-3xl text-vin">{a.title}</p>
+                  <p className="mt-2 text-encre-doux">{a.desc}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="bg-sable-fonce py-16 md:py-24">
+          <div className="wrap max-w-3xl">
+            <h2 className="titre text-[2.6rem] text-vin md:text-6xl">Pourquoi RTP&nbsp;?</h2>
+            <p className="mt-6 text-lg">
+              RTP, c&apos;est Retrouve Ton Périnée. Mais c&apos;est aussi Retrouve Ta Puissance,
+              Retrouve Ta Passion, Retrouve Ta Liberté.
             </p>
-            <p className="text-lg text-noir">
-              C'est un programme pensé pour les femmes qui refusent de renoncer.
-              Pour celles qui veulent continuer à se dépasser, à performer, à
-              vivre leur sport pleinement.
+            <p className="mt-4 text-lg">
+              Un programme pour les femmes qui refusent de renoncer. Pour celles qui veulent
+              continuer à se dépasser, à performer, à vivre leur sport pleinement.
             </p>
           </div>
-        </div>
-      </Section>
+        </section>
 
-      {/* CTA */}
-      <Section className="bg-gradient-to-b from-bordeaux to-bordeaux-dark text-white">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold mb-6">
-            On travaille ensemble ?
-          </h2>
-          <p className="text-xl mb-8 opacity-90">
-            Rejoins les femmes qui ont retrouvé leur liberté
-          </p>
-          <Button
-            href="/tarifs"
-            variant="secondary"
-            className="px-8 py-4 text-lg"
-            eventName="cta_click"
-            eventData={{ location: "a_propos", action: "je_demarre_maintenant" }}
-          >
-            Je démarre maintenant
-          </Button>
-        </div>
-      </Section>
-
-      <MobileCTA />
+        <section className="bg-vin py-16 text-sable md:py-24">
+          <div className="wrap">
+            <h2 className="display max-w-2xl text-6xl text-poudre md:text-7xl">On travaille ensemble&nbsp;?</h2>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row" data-cta-zone>
+              <Cta href="/test" variant="poudre" from="a_propos">
+                Faire le test (2 min)
+              </Cta>
+              <Cta href={site.instagram} external variant="contour-clair" from="a_propos_instagram">
+                <FaInstagram aria-hidden /> Me suivre sur Instagram
+              </Cta>
+            </div>
+          </div>
+        </section>
+      </main>
       <Footer />
-    </main>
+      <StickyCta />
+    </>
   );
 }
